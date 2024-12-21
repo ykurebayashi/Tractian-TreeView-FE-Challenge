@@ -16,9 +16,11 @@ export const Main = () => {
         current={context?.location}
         onClick={context?.setLocation}
       />
-      <MainBody>
-        <InfoPannel />
-      </MainBody>
+      {context?.location && (
+        <MainBody>
+          <InfoPannel />
+        </MainBody>
+      )}
     </MainContainer>
   );
 };

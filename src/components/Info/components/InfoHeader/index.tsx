@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FlexRow, Text } from "./style";
+import { FlexRow, Text, NamingContainer } from "./style";
 import { MyContext } from "../../../../globals/context";
 
 export const InfoHeader = () => {
@@ -7,21 +7,14 @@ export const InfoHeader = () => {
 
   return (
     <FlexRow>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "baseline",
-          justifyContent: "center",
-          gap: "5px",
-        }}
-      >
+      <NamingContainer>
         <Text $fontSize={22} $fontWeight={600}>
           Ativos
         </Text>
         <Text style={{ color: "#77818C" }} $fontSize={14}>
           / {context?.location?.name} Unit
         </Text>
-      </div>
+      </NamingContainer>
     </FlexRow>
   );
 };
