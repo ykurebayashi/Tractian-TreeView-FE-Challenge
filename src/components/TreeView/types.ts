@@ -1,6 +1,6 @@
 export type NodeType = {
     id: string;
     name: string;
-    type: string;
+    type: "location" | "asset" | "component";
     children: NodeType[];
   };

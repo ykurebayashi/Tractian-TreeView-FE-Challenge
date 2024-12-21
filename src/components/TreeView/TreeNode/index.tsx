@@ -8,6 +8,7 @@ import {
   LabelingElement,
   ExpandCondenseButton,
 } from "./style";
+import { NodeIcons } from "./constants";
 
 export const TreeNode = ({ node }: { node: NodeType }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +22,7 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
             {isOpen ? <ChevronDown size={10} /> : <ChevronUp size={10} />}
           </ExpandCondenseButton>
         )}
+        {NodeIcons[node.type]}
         <Text>{node.name}</Text>
       </LabelingElement>
       {isOpen && <TreeView data={node?.children} />}
