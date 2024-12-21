@@ -13,3 +13,17 @@ export const MainContainer = styled.div`
   border: 1px solid ${CustomColors.grey.medium};
   padding: 16px;
 `;
+
+export const InfosContainer = styled.div`
+  display: flex; 
+  align-ttems: flex-start; 
+  gap: 12px; 
+  width: 100%; 
+  height: 100%; 
+`
+
+export const InfoSection = styled.div<{$width?: string}>`
+  border: ${`1px solid ${CustomColors.grey.medium}`};
+  height: 100%;
+  width: ${props => props.$width ?? '100%'};
+`

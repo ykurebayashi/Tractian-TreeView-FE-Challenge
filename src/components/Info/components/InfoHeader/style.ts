@@ -6,6 +6,7 @@ export const FlexRow = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-bottom: 12px;
 `;
 
 export const Text = styled.p<{ $fontSize?: number; $fontWeight?: number, $fontColor?: string; }>`
