@@ -1,14 +1,13 @@
 import Logo from "../../assets/logo.svg";
 import CompanyIcon from "../../assets/company-icon.svg";
 import { Main, Flexrow, StyledButton, Text } from "./style";
-
-type HeaderProps = {
-  onClick?: (param: string) => void;
-  current?: string | null;
-  locations: { id: string; name: string }[];
-};
+import { HeaderProps } from "./types";
 
 export const Header = ({ onClick, current, locations }: HeaderProps) => {
+  const handleClick = (id: string) => {
+    onClick?.(id);
+  };
+
   return (
     <Main>
       <Logo />
@@ -16,7 +15,7 @@ export const Header = ({ onClick, current, locations }: HeaderProps) => {
         {locations.map((location) => {
           return (
             <StyledButton
-              onClick={() => onClick?.(location.id)}
+              onClick={() => handleClick(location.id)}
               $isSelected={location.id === current}
             >
               <CompanyIcon />

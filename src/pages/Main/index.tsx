@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import { Header } from "../components/Header";
-import { useGetCompanies } from "../query/useGetCompanies";
+import { Header } from "../../components/Header";
+import { useGetCompanies } from "../../query/useGetCompanies";
 import { useContext } from "react";
-import { MyContext } from "../globals/context";
+import { MyContext } from "../../globals/context";
+import { InfoPannel } from "../../components/Info";
+import { MainContainer, MainBody } from "./style";
 
 export const Main = () => {
   const companies = useGetCompanies();
@@ -15,13 +16,9 @@ export const Main = () => {
         current={context?.location}
         onClick={context?.setLocation}
       />
+      <MainBody>
+        <InfoPannel />
+      </MainBody>
     </MainContainer>
   );
 };
-
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;

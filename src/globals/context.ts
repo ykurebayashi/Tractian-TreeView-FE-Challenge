@@ -6,4 +6,4 @@ type ContextType = {
   };
 
 
-  export const MyContext = createContext<ContextType | undefined>(undefined);
+export const MyContext = createContext<ContextType | undefined>(undefined);
