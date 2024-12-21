@@ -1,17 +1,22 @@
-import styled from "styled-components";
+import { FlexRow, Text } from "./style";
 
 export const InfoHeader = () => {
   return (
     <FlexRow>
-      <p>Ativos</p>
-      <p>passivos</p>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          justifyContent: "center",
+        }}
+      >
+        <Text $fontSize={22} $fontWeight={600}>
+          Ativos
+        </Text>
+        <Text style={{ color: "#77818C" }} $fontSize={14}>
+          / Unit
+        </Text>
+      </div>
     </FlexRow>
   );
 };
-
-export const FlexRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-`;
