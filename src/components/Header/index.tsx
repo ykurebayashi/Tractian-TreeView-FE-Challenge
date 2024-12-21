@@ -19,7 +19,7 @@ export const Header = ({ onClick, current, locations }: HeaderProps) => {
               $isSelected={location.id === current}
             >
               <CompanyIcon />
-              <Text>{location.name}</Text>
+              <Text>{location.name} Unit</Text>
             </StyledButton>
           );
         })}
