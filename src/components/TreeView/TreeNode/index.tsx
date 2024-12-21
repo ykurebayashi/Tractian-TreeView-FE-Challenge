@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NodeType } from "../types";
 import { TreeView } from "..";
+import { ChevronDown, ChevronUp } from "react-feather";
 
 export const TreeNode = ({ node }: { node: NodeType }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,9 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
   return (
     <div>
       {node.children && (
-        <button onClick={toggleNode}>{isOpen ? "close" : "open"}</button>
+        <button onClick={toggleNode}>
+          {isOpen ? <ChevronDown /> : <ChevronUp />}
+        </button>
       )}
       <span>{node.name}</span>
       {isOpen && <TreeView data={node?.children} />}
