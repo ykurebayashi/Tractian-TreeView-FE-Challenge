@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 type ContextType = {
-  location: string;
-  setLocation: React.Dispatch<React.SetStateAction<string>>;
+  location: {id: string, name:string} | undefined;
+  setLocation: React.Dispatch<React.SetStateAction<{id: string, name:string} | undefined>>;
 };
 
 

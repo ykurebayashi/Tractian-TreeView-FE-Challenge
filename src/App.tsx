@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Main } from "./pages/Main";
 
 function App() {
-  const [location, setLocation] = useState<string>("");
+  const [location, setLocation] = useState<
+    { id: string; name: string } | undefined
+  >(undefined);
 
   return (
     <MyContext.Provider value={{ location, setLocation }}>

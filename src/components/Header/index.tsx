@@ -4,8 +4,8 @@ import { Main, Flexrow, StyledButton, Text } from "./style";
 import { HeaderProps } from "./types";
 
 export const Header = ({ onClick, current, locations }: HeaderProps) => {
-  const handleClick = (id: string) => {
-    onClick?.(id);
+  const handleClick = (element: { id: string; name: string }) => {
+    onClick?.(element);
   };
 
   return (
@@ -15,8 +15,8 @@ export const Header = ({ onClick, current, locations }: HeaderProps) => {
         {locations.map((location) => {
           return (
             <StyledButton
-              onClick={() => handleClick(location.id)}
-              $isSelected={location.id === current}
+              onClick={() => handleClick(location)}
+              $isSelected={location.id === current?.id}
             >
               <CompanyIcon />
               <Text>{location.name} Unit</Text>
