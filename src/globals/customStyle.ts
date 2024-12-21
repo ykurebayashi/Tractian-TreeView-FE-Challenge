@@ -5,6 +5,7 @@ export const CustomColors = {
         ligth: '#2188FF'
     },
     grey: {
+        dark: '#77818C',
         medium: '#D8DFE6',
         light: '#E4E9EE',
     }
