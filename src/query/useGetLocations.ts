@@ -8,6 +8,6 @@ const fetchCompanyLocations = async ({id}:{id: string}) => {
   return data;
 };
 
-export const useGetCompanyLocations = (params: {id: string}) => {
-  return useQuery({queryKey: [QueryKeys.GET_COMPANY_LOCATION, params.id], queryFn: () => fetchCompanyLocations({id: params.id})});
+export const useGetCompanyLocations = ({params, enabled}: { params: {id: string,}, enabled: boolean}) => {
+  return useQuery({queryKey: [QueryKeys.GET_COMPANY_LOCATION, params.id], queryFn: () => fetchCompanyLocations({id: params.id}),enabled});
 };

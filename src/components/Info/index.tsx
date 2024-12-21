@@ -90,7 +90,8 @@ const MockData: NodeType[] = [
   },
 ];
 
-export const InfoPannel = () => {
+export const InfoPannel = ({ currentId }: { currentId: string }) => {
+  console.log(currentId);
   return (
     <MainContainer>
       <InfoHeader />

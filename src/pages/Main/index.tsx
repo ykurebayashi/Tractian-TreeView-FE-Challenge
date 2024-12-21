@@ -18,7 +18,7 @@ export const Main = () => {
       />
       {context?.location && (
         <MainBody>
-          <InfoPannel />
+          <InfoPannel currentId={context.location.id} />
         </MainBody>
       )}
     </MainContainer>

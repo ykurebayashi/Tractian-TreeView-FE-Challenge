@@ -8,6 +8,10 @@ const fetchCompanyAssets = async ({id}:{id: string}) => {
   return data;
 };
 
-export const useGetCompanyAssets = (params: {id: string}) => {
-  return useQuery({queryKey: [QueryKeys.GET_COMPANY_ASSETS, params.id], queryFn: () => fetchCompanyAssets({id: params.id})});
+export const useGetCompanyAssets = ({params, enabled}: { params: {id: string,}, enabled: boolean}) => {
+  return useQuery({
+    queryKey: [QueryKeys.GET_COMPANY_ASSETS, params.id],
+    queryFn: () => fetchCompanyAssets({ id: params.id }),
+    enabled,
+  });
 };
