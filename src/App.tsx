@@ -1,5 +1,11 @@
+import styled from "styled-components";
+
 function App() {
-  return <p>oi</p>;
+  return <StyledP>oi</StyledP>;
 }
+
+const StyledP = styled.p`
+  color: red;
+`;
 
 export default App;
