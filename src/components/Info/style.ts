@@ -28,3 +28,11 @@ export const InfoSection = styled.div<{$width?: string}>`
   width: ${props => props.$width ?? '100%'};
   overflow: scroll;
 `
+
+export const SearchBar = styled.input`
+  width: 100%;
+  height: 45px;
+  padding: 4px 12px;
+  border: none;
+  border-bottom: 1px solid ${CustomColors.grey.light};
+`
