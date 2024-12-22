@@ -52,21 +52,37 @@ export const useGetTree = ({currentId, search, filter}: {currentId: string, sear
       });
     
       assets?.forEach((asset) => {
-        console.log(asset.status)
-        if (
-          !filter ||
-          filter !== 'critical_sensor' || 
-          !(asset.status === 'alert')
-        ){
+        if (!filter) {
           assetMap.set(asset.id, {
             ...asset,
             id: asset.id,
             name: asset.name,
-            type: asset.sensorType ? "component" : "asset", // If the item has a sensorType, it means it is a component - o ternário vai checar isso
+            type: asset.sensorType ? "component" : "asset", // Se tiver sensorType, é 'component', caso contrário é 'asset'
+            children: [],
+          });
+        }
+
+        if (filter === 'energy_sensor' && (asset.sensorType === 'energy' || asset.sensorType === null)) {
+          assetMap.set(asset.id, {
+            ...asset,
+            id: asset.id,
+            name: asset.name,
+            type: asset.sensorType ? "component" : "asset",
+            children: [],
+          });
+        }
+      
+        if (filter === 'critical_sensor' && asset.status === 'alert') {
+          assetMap.set(asset.id, {
+            ...asset,
+            id: asset.id,
+            name: asset.name,
+            type: asset.sensorType ? "component" : "asset",
             children: [],
           });
         }
       });
+      
 
       // 4 regras:
       // 1)If the item has a sensorType, it means it is a component. If it does not have a location or a parentId, it means he is unliked from any asset or location in the tree.
