@@ -94,6 +94,7 @@ const MockData: NodeType[] = [
 
 export const InfoPannel = ({ currentId }: { currentId: string }) => {
   const tree = useGetTree({ currentId });
+  console.log(tree.data);
 
   return (
     <MainContainer>
