@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { CustomColors } from "../../globals/customStyle";
 
 export const Main = styled.div<{$isMobile?: boolean;}>`
-  height: ${props => props.$isMobile ? '120px': '48px'};
+  min-height: ${props => props.$isMobile ? '120px': '48px'};
   width: 100%;
   background-color: ${CustomColors.blue.dark};
   display: flex;
