@@ -14,12 +14,13 @@ export const MainContainer = styled.div`
   padding: 16px;
 `;
 
-export const InfosContainer = styled.div`
+export const InfosContainer = styled.div<{$isMobile?: boolean}>`
   display: flex; 
   align-items: flex-start; 
   gap: 12px; 
   width: 100%; 
   height: 90%; 
+  flex-direction: ${props => props.$isMobile ? 'column': 'row'};
 `
 
 export const InfoSection = styled.div<{$width?: string}>`

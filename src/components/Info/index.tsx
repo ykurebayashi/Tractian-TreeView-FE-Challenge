@@ -6,6 +6,7 @@ import { InfoHeader } from "./components/InfoHeader";
 import { InfosContainer, MainContainer, InfoSection, SearchBar } from "./style";
 import { useDebounce } from "../../hooks/useDebounce";
 import { DetailedInfo } from "./components/DetailedInfo";
+import { useMobileInfo } from "../../hooks/useMobileInfo";
 
 export const InfoPannel = ({
   currentId,
@@ -21,12 +22,13 @@ export const InfoPannel = ({
     search: actualSearch,
     filter: filter,
   });
+  const { isMobile } = useMobileInfo();
 
   return (
     <MainContainer>
       <InfoHeader />
-      <InfosContainer>
-        <InfoSection $width="35%">
+      <InfosContainer $isMobile={isMobile}>
+        <InfoSection $width={isMobile ? "100%" : "35%"}>
           <LoadingSpinner isLoading={tree.isLoading}>
             <SearchBar
               type="text"
@@ -36,7 +38,7 @@ export const InfoPannel = ({
             <TreeView data={tree.data} />
           </LoadingSpinner>
         </InfoSection>
-        <InfoSection $width="65%">
+        <InfoSection $width={isMobile ? "100%" : "65%"}>
           <DetailedInfo />
         </InfoSection>
       </InfosContainer>
