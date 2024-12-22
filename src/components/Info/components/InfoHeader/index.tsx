@@ -8,6 +8,14 @@ import { CustomColors } from "../../../../globals/customStyle";
 export const InfoHeader = () => {
   const context = useContext(MyContext);
 
+  const handleUpdateFilter = (filter: "critical_sensor" | "energy_sensor") => {
+    if (filter === context?.filter) {
+      return context.setFilter(undefined);
+    }
+
+    context?.setFilter(filter);
+  };
+
   return (
     <FlexRow>
       <FlexContainer>
@@ -19,13 +27,23 @@ export const InfoHeader = () => {
         </Text>
       </FlexContainer>
       <FlexContainer>
-        <FilterButtons>
+        <FilterButtons
+          onClick={() => {
+            handleUpdateFilter("energy_sensor");
+          }}
+          $isSelected={context?.filter === "energy_sensor"}
+        >
           <BoltIcon />
           <Text $fontColor={CustomColors.grey.dark} $fontWeight={600}>
             Sensor de Energia
           </Text>
         </FilterButtons>
-        <FilterButtons>
+        <FilterButtons
+          onClick={() => {
+            handleUpdateFilter("critical_sensor");
+          }}
+          $isSelected={context?.filter === "critical_sensor"}
+        >
           <InfoIcon />
           <Text $fontColor={CustomColors.grey.dark} $fontWeight={600}>
             Crítico

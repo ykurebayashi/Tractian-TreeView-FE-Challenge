@@ -6,10 +6,20 @@ import { InfoHeader } from "./components/InfoHeader";
 import { InfosContainer, MainContainer, InfoSection } from "./style";
 import { useDebounce } from "../../hooks/useDebounce";
 
-export const InfoPannel = ({ currentId }: { currentId: string }) => {
+export const InfoPannel = ({
+  currentId,
+  filter,
+}: {
+  currentId: string;
+  filter?: "energy_sensor" | "critical_sensor";
+}) => {
   const [search, setSearch] = useState<string>("");
   const actualSearch = useDebounce({ value: search, debounceTime: 500 });
-  const tree = useGetTree({ currentId: currentId, search: actualSearch });
+  const tree = useGetTree({
+    currentId: currentId,
+    search: actualSearch,
+    filter: filter,
+  });
 
   return (
     <MainContainer>

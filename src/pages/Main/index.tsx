@@ -21,7 +21,7 @@ export const Main = () => {
       </LoadingSpinner>
       {context?.location && (
         <MainBody>
-          <InfoPannel currentId={context.location.id} />
+          <InfoPannel currentId={context.location.id} filter={context.filter} />
         </MainBody>
       )}
     </MainContainer>

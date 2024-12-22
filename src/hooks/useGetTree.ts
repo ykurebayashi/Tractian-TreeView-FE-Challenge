@@ -26,7 +26,7 @@ type Asset = {
   gatewayId?: string | null
 };
 
-export const useGetTree = ({currentId, search}: {currentId: string, search: string}) => {
+export const useGetTree = ({currentId, search, filter}: {currentId: string, search: string, filter?: 'energy_sensor' | 'critical_sensor'}) => {
   const locations = useGetCompanyLocations({params:{id: currentId}, enabled: !!currentId})
   const assets = useGetCompanyAssets({params:{id: currentId}, enabled: !!currentId});
 
@@ -34,7 +34,7 @@ export const useGetTree = ({currentId, search}: {currentId: string, search: stri
       return locations.isLoading || assets.isLoading
   }, [locations, assets])
 
-  const buildTree = (locations: Location[], assets: Asset[]): TreeNode[] => {
+  const buildTree = (locations: Location[], assets: Asset[], filter?: 'energy_sensor' | 'critical_sensor'): TreeNode[] => {
       const locationMap = new Map<string, TreeNode>(); // usar map pra depois poder acessar os nodes baseado na chave do seu id em vez de ter que ficar procurando no array.
       const assetMap = new Map<string, TreeNode>();
       const rootNodes: TreeNode[] = []; // aqui como vai ser a versão final, não tem problema jogar como array
@@ -52,13 +52,20 @@ export const useGetTree = ({currentId, search}: {currentId: string, search: stri
       });
     
       assets?.forEach((asset) => {
-        assetMap.set(asset.id, {
-          ...asset,
-          id: asset.id,
-          name: asset.name,
-          type: asset.sensorType ? "component" : "asset", // If the item has a sensorType, it means it is a component - o ternário vai checar isso
-          children: [],
-        });
+        console.log(asset.status)
+        if (
+          !filter ||
+          filter !== 'critical_sensor' || 
+          !(asset.status === 'alert')
+        ){
+          assetMap.set(asset.id, {
+            ...asset,
+            id: asset.id,
+            name: asset.name,
+            type: asset.sensorType ? "component" : "asset", // If the item has a sensorType, it means it is a component - o ternário vai checar isso
+            children: [],
+          });
+        }
       });
 
       // 4 regras:
@@ -133,11 +140,11 @@ export const useGetTree = ({currentId, search}: {currentId: string, search: stri
   
   const data = useMemo(() => {
     if(locations.data && assets. data) {
-        const result = buildTree(locations.data, assets.data); 
+        const result = buildTree(locations.data, assets.data, filter); 
         return result;
     }
     return [];
-  },[assets.data, locations.data])
+  },[assets.data, locations.data, filter])
 
   const usedData = useMemo(() => {
     if (!search) {
