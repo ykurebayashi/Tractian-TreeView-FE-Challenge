@@ -4,10 +4,12 @@ import { LoadingSpinner } from "../Loading";
 import { TreeView } from "../TreeView";
 import { InfoHeader } from "./components/InfoHeader";
 import { InfosContainer, MainContainer, InfoSection } from "./style";
+import { useDebounce } from "../../hooks/useDebounce";
 
 export const InfoPannel = ({ currentId }: { currentId: string }) => {
   const [search, setSearch] = useState<string>("");
-  const tree = useGetTree({ currentId: currentId, search: search });
+  const actualSearch = useDebounce({ value: search, debounceTime: 500 });
+  const tree = useGetTree({ currentId: currentId, search: actualSearch });
 
   return (
     <MainContainer>
