@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NodeType } from "../types";
 import { TreeView } from "..";
 import { ChevronDown, ChevronUp } from "react-feather";
@@ -14,13 +14,22 @@ import {
 import { NodeIcons } from "./constants";
 import Bolt from "../../../assets/bolt-icon.svg";
 import Dot from "../../../assets/dot-icon.svg";
+import { MyContext } from "../../../globals/context";
 
 export const TreeNode = ({ node }: { node: NodeType }) => {
+  const myContext = useContext(MyContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const hasChildren = node.children && node.children.length > 0;
 
   const toggleNode = () => setIsOpen(!isOpen);
+
+  const toggleSelected = (node: NodeType) => {
+    if (myContext?.selectedAsset === node) {
+      return myContext.setSelectedAsset(undefined);
+    }
+    return myContext?.setSelectedAsset(node);
+  };
 
   const getIcon = (type: "energy" | "vibration" | string) => {
     if (type === "energy") {
@@ -54,7 +63,10 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
         <IconContainer $hasChildren={hasChildren}>
           {NodeIcons[node.type]}
         </IconContainer>
-        <LabelButton $isAsset={node.type === "component"}>
+        <LabelButton
+          $isAsset={node.type === "component"}
+          onClick={() => toggleSelected(node)}
+        >
           <Text>{node.name}</Text>
         </LabelButton>
         {node?.sensorType && getIcon(node?.sensorType)}

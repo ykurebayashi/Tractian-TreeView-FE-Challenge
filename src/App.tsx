@@ -1,6 +1,7 @@
 import { MyContext } from "./globals/context";
 import { useState } from "react";
 import { Main } from "./pages/Main";
+import { NodeType } from "./components/TreeView/types";
 
 function App() {
   const [location, setLocation] = useState<
@@ -9,9 +10,21 @@ function App() {
   const [filter, setFilter] = useState<
     "energy_sensor" | "critical_sensor" | undefined
   >(undefined);
+  const [selectedAsset, setSelectedAsset] = useState<NodeType | undefined>(
+    undefined
+  );
 
   return (
-    <MyContext.Provider value={{ location, setLocation, filter, setFilter }}>
+    <MyContext.Provider
+      value={{
+        location,
+        setLocation,
+        filter,
+        setFilter,
+        selectedAsset,
+        setSelectedAsset,
+      }}
+    >
       <Main />
     </MyContext.Provider>
   );

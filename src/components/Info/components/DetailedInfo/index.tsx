@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import { CustomColors } from "../../../../globals/customStyle";
+import { useContext } from "react";
+import { MyContext } from "../../../../globals/context";
 
 export const DetailedInfo = () => {
+  const myContext = useContext(MyContext);
+
   return (
     <Column>
       <TitleContainer>
-        <AssetTitle>NOME DO ASSET AQUI</AssetTitle>
+        <AssetTitle>{myContext?.selectedAsset?.name}</AssetTitle>
         <IconContainer>oi</IconContainer>
       </TitleContainer>
       <p>oi2</p>
