@@ -27,10 +27,10 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
             {isOpen ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
           </ExpandCondenseButton>
         )}
+        <IconContainer $hasChildren={hasChildren}>
+          {NodeIcons[node.type]}
+        </IconContainer>
         <LabelButton>
-          <IconContainer $hasChildren={hasChildren}>
-            {NodeIcons[node.type]}
-          </IconContainer>
           <Text>{node.name}</Text>
         </LabelButton>
       </LabelingElement>
