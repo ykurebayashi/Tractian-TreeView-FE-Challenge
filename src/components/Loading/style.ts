@@ -19,3 +19,10 @@ export const Loader = styled.div`
    -webkit-animation: ${spin} 2s linear infinite;
   animation: ${spin} 2s linear infinite;
 `
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`

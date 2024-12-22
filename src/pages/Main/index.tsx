@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { MyContext } from "../../globals/context";
 import { InfoPannel } from "../../components/Info";
 import { MainContainer, MainBody } from "./style";
+import { LoadingSpinner } from "../../components/Loading";
 
 export const Main = () => {
   const companies = useGetCompanies();
@@ -11,11 +12,13 @@ export const Main = () => {
 
   return (
     <MainContainer>
-      <Header
-        locations={companies.data || []}
-        current={context?.location}
-        onClick={context?.setLocation}
-      />
+      <LoadingSpinner isLoading={companies.isLoading}>
+        <Header
+          locations={companies.data || []}
+          current={context?.location}
+          onClick={context?.setLocation}
+        />
+      </LoadingSpinner>
       {context?.location && (
         <MainBody>
           <InfoPannel currentId={context.location.id} />

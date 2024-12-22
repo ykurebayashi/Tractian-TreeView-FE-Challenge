@@ -1,4 +1,4 @@
-import { Loader } from "./style";
+import { Loader, LoaderContainer } from "./style";
 import { LoadingSpinnerProps } from "./type";
 
 export const LoadingSpinner = ({
@@ -8,16 +8,9 @@ export const LoadingSpinner = ({
   return (
     <>
       {isLoading ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-          }}
-        >
-          <Loader />{" "}
-        </div>
+        <LoaderContainer>
+          <Loader />
+        </LoaderContainer>
       ) : (
         children
       )}
