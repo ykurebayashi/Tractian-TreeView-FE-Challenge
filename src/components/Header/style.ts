@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import { CustomColors } from "../../globals/customStyle";
 
-export const Main = styled.div`
-  height: 48px;
+export const Main = styled.div<{$isMobile?: boolean;}>`
+  height: ${props => props.$isMobile ? '120px': '48px'};
   width: 100%;
   background-color: ${CustomColors.blue.dark};
   display: flex;
   justify-content: space-between;
   padding: 16px;
   align-items: center;
+  flex-direction: ${props => props.$isMobile ? 'column' : 'row'};
 `;
 
 export const StyledButton = styled.button<{ $isSelected?: boolean }>`
