@@ -48,5 +48,5 @@ export const StatusIconContainer = styled.div<{ $color?: string, $size?: string}
 export const LabelButton = styled.button<{$isAsset?: boolean;}>`
     background: none;
     border: none;
-    cursor: ${props => props.$isAsset && 'pointer'};
+    cursor: pointer;
 `

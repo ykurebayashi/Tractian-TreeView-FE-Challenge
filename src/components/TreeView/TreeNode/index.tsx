@@ -22,9 +22,14 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
 
   const hasChildren = node.children && node.children.length > 0;
 
-  const toggleNode = () => setIsOpen(!isOpen);
+  const toggleNode = () => {
+    setIsOpen(!isOpen);
+  };
 
   const toggleSelected = (node: NodeType) => {
+    if (node.type !== "component") {
+      return toggleNode();
+    }
     if (myContext?.selectedAsset === node) {
       return myContext.setSelectedAsset(undefined);
     }
@@ -63,10 +68,7 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
         <IconContainer $hasChildren={hasChildren}>
           {NodeIcons[node.type]}
         </IconContainer>
-        <LabelButton
-          $isAsset={node.type === "component"}
-          onClick={() => toggleSelected(node)}
-        >
+        <LabelButton onClick={() => toggleSelected(node)}>
           <Text>{node.name}</Text>
         </LabelButton>
         {node?.sensorType && getIcon(node?.sensorType)}
