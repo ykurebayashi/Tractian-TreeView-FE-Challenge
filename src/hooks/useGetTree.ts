@@ -26,7 +26,9 @@ type Asset = {
   gatewayId?: string | null
 };
 
-export const useGetTree = ({currentId, search, filter}: {currentId: string, search: string, filter?: 'energy_sensor' | 'critical_sensor'}) => {
+export type FilterType = 'energy_sensor' | 'critical_sensor'
+
+export const useGetTree = ({currentId, search, filter}: {currentId: string, search: string, filter?: FilterType}) => {
   const locations = useGetCompanyLocations({params:{id: currentId}, enabled: !!currentId})
   const assets = useGetCompanyAssets({params:{id: currentId}, enabled: !!currentId});
 
@@ -34,7 +36,7 @@ export const useGetTree = ({currentId, search, filter}: {currentId: string, sear
       return locations.isLoading || assets.isLoading
   }, [locations, assets])
 
-  const buildTree = (locations: Location[], assets: Asset[], filter?: 'energy_sensor' | 'critical_sensor'): TreeNode[] => {
+  const buildTree = (locations: Location[], assets: Asset[], filter?: FilterType): TreeNode[] => {
       const locationMap = new Map<string, TreeNode>(); // usar map pra depois poder acessar os nodes baseado na chave do seu id em vez de ter que ficar procurando no array.
       const assetMap = new Map<string, TreeNode>();
       const rootNodes: TreeNode[] = []; // aqui como vai ser a versão final, não tem problema jogar como array
