@@ -36,4 +36,6 @@ export const SearchBar = styled.input`
   padding: 4px 12px;
   border: none;
   border-bottom: 1px solid ${CustomColors.grey.light};
+  position: sticky;
+  top: 0;
 `
