@@ -30,7 +30,7 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
         <IconContainer $hasChildren={hasChildren}>
           {NodeIcons[node.type]}
         </IconContainer>
-        <LabelButton>
+        <LabelButton $isAsset={node.type === "component"}>
           <Text>{node.name}</Text>
         </LabelButton>
       </LabelingElement>

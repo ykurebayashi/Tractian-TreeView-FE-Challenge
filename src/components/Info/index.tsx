@@ -5,6 +5,7 @@ import { TreeView } from "../TreeView";
 import { InfoHeader } from "./components/InfoHeader";
 import { InfosContainer, MainContainer, InfoSection, SearchBar } from "./style";
 import { useDebounce } from "../../hooks/useDebounce";
+import { DetailedInfo } from "./components/DetailedInfo";
 
 export const InfoPannel = ({
   currentId,
@@ -35,7 +36,9 @@ export const InfoPannel = ({
             <TreeView data={tree.data} />
           </LoadingSpinner>
         </InfoSection>
-        <InfoSection $width="65%"></InfoSection>
+        <InfoSection $width="65%">
+          <DetailedInfo />
+        </InfoSection>
       </InfosContainer>
     </MainContainer>
   );

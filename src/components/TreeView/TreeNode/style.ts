@@ -31,8 +31,8 @@ export const IconContainer = styled.div<{$hasChildren: boolean}>`
     }
 `
 
-export const LabelButton = styled.button`
+export const LabelButton = styled.button<{$isAsset?: boolean;}>`
     background: none;
     border: none;
-    cursor: pointer;
+    cursor: ${props => props.$isAsset && 'pointer'};
 `
