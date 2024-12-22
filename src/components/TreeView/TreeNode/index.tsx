@@ -9,8 +9,11 @@ import {
   ExpandCondenseButton,
   IconContainer,
   LabelButton,
+  StatusIconContainer,
 } from "./style";
 import { NodeIcons } from "./constants";
+import Bolt from "../../../assets/bolt-icon.svg";
+import Dot from "../../../assets/dot-icon.svg";
 
 export const TreeNode = ({ node }: { node: NodeType }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +21,27 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
   const hasChildren = node.children && node.children.length > 0;
 
   const toggleNode = () => setIsOpen(!isOpen);
+
+  const getIcon = (type: "energy" | "vibration" | string) => {
+    if (type === "energy") {
+      return (
+        <StatusIconContainer
+          $size="15px"
+          $color={node?.status === "operating" ? "green" : "red"}
+        >
+          <Bolt />
+        </StatusIconContainer>
+      );
+    }
+    return (
+      <StatusIconContainer
+        $size="8px"
+        $color={node?.status === "operating" ? "green" : "red"}
+      >
+        <Dot />
+      </StatusIconContainer>
+    );
+  };
 
   return (
     <MainNodeContainer>
@@ -33,6 +57,7 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
         <LabelButton $isAsset={node.type === "component"}>
           <Text>{node.name}</Text>
         </LabelButton>
+        {node?.sensorType && getIcon(node?.sensorType)}
       </LabelingElement>
       {isOpen && <TreeView data={node?.children} />}
     </MainNodeContainer>

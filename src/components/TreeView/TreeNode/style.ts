@@ -23,11 +23,25 @@ export const ExpandCondenseButton = styled.button`
     cursor: pointer;
 `
 
-export const IconContainer = styled.div<{$hasChildren: boolean}>`
+export const IconContainer = styled.div<{$hasChildren: boolean, $color?: string, $size?: string}>`
     padding-left: ${props => props.$hasChildren ? '' : '13px'};
     svg{
-        width: 22px;
-        height: 22px;
+        width: ${props => props.$size ?? '22px'};
+        height: ${props => props.$size ?? '22px'};
+        circle {
+            fill: ${props => props.$color ?? '#ED3833'};
+        }
+    }
+`
+
+export const StatusIconContainer = styled.div<{ $color?: string, $size?: string}>`
+    padding-left: 5px;
+    svg{
+        width: ${props => props.$size ?? '22px'};
+        height: ${props => props.$size ?? '22px'};
+        circle, path {
+            fill: ${props => props.$color ?? '#ED3833'};
+        }
     }
 `
 
