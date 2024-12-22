@@ -1,3 +1,5 @@
+import { useGetTree } from "../../hooks/useGetTree";
+import { LoadingSpinner } from "../Loading";
 import { TreeView } from "../TreeView";
 import { NodeType } from "../TreeView/types";
 import { InfoHeader } from "./components/InfoHeader";
@@ -91,13 +93,16 @@ const MockData: NodeType[] = [
 ];
 
 export const InfoPannel = ({ currentId }: { currentId: string }) => {
-  console.log(currentId);
+  const tree = useGetTree({ currentId });
+
   return (
     <MainContainer>
       <InfoHeader />
       <InfosContainer>
         <InfoSection $width="35%">
-          <TreeView data={MockData} />
+          <LoadingSpinner isLoading={tree.isLoading}>
+            <TreeView data={MockData} />
+          </LoadingSpinner>
         </InfoSection>
         <InfoSection $width="65%"></InfoSection>
       </InfosContainer>
