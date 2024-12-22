@@ -116,13 +116,7 @@ export const useGetTree = ({currentId, search}: {currentId: string, search: stri
           ? filterHighlightedNodes(node.children, query)
           : [];
 
-        if (shouldInsert) {
-          filteredNodes.push({
-            ...node,
-            children: node.children || [],
-          });
-        }
-        if (nodeChildrens.length > 0) {
+        if (shouldInsert || nodeChildrens.length > 0) {
           filteredNodes.push({
             ...node,
             children: nodeChildrens,
