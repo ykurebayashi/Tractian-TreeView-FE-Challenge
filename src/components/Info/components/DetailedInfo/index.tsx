@@ -9,9 +9,11 @@ import {
   Row,
   TitleContainer,
 } from "./style";
+import { useMobileInfo } from "../../../../hooks/useMobileInfo";
 
 export const DetailedInfo = () => {
   const myContext = useContext(MyContext);
+  const { isMobile } = useMobileInfo();
 
   return (
     <>
@@ -22,7 +24,7 @@ export const DetailedInfo = () => {
           </TitleContainer>
 
           <Column $padding="24px" $disableBorder>
-            <Row>
+            <Row style={{ flexDirection: isMobile ? "column" : "row" }}>
               {/* Placeholder para imagem, pode ser um input de arquivo */}
               <div
                 style={{
@@ -49,7 +51,7 @@ export const DetailedInfo = () => {
                 <Infotitle>Sensor</Infotitle>
                 <InfoText>{myContext?.selectedAsset?.sensorId}</InfoText>
               </Column>
-              <Column $disableBorder>
+              <Column $disableBorder $marginBottom={isMobile ? "24px" : "0"}>
                 <Infotitle>Receptor</Infotitle>
                 <InfoText>{myContext?.selectedAsset?.gatewayId}</InfoText>
               </Column>
