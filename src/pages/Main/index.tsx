@@ -10,13 +10,20 @@ export const Main = () => {
   const companies = useGetCompanies();
   const context = useContext(MyContext);
 
+  const changeCompany = (newCompany: { id: string; name: string }) => {
+    context?.setLocation(newCompany);
+    if (newCompany !== context?.location) {
+      context?.setSelectedAsset(undefined);
+    }
+  };
+
   return (
     <MainContainer>
       <LoadingSpinner isLoading={companies.isLoading}>
         <Header
           locations={companies.data || []}
           current={context?.location}
-          onClick={context?.setLocation}
+          onClick={changeCompany}
         />
       </LoadingSpinner>
       {context?.location && (

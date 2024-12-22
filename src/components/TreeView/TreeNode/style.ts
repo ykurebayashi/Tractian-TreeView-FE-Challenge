@@ -24,7 +24,7 @@ export const ExpandCondenseButton = styled.button`
 `
 
 export const IconContainer = styled.div<{$hasChildren: boolean, $color?: string, $size?: string}>`
-    padding-left: ${props => props.$hasChildren ? '' : '13px'};
+    padding-left: ${props => props.$hasChildren ? '' : '20px'};
     svg{
         width: ${props => props.$size ?? '22px'};
         height: ${props => props.$size ?? '22px'};
