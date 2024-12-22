@@ -13,7 +13,7 @@ export const InfoHeader = () => {
       return context.setFilter(undefined);
     }
 
-    context?.setFilter(filter);
+    return context?.setFilter(filter);
   };
 
   return (
