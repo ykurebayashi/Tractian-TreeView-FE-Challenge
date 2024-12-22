@@ -45,6 +45,11 @@ export const Column = styled.div<{
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid ${CustomColors.grey.medium};
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.61);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
   `;
   
   export const Infotitle = styled.p`

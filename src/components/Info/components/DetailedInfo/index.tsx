@@ -40,7 +40,11 @@ export const DetailedInfo = () => {
                   <Infotitle>Tipo de equipamento:</Infotitle>
                   <InfoText>Tipo A</InfoText>
                 </Column>
-                <Column $disableBorder style={{ paddingTop: "24px" }}>
+                <Column
+                  $disableBorder
+                  $marginBottom={isMobile ? "24px" : "0"}
+                  style={{ paddingTop: "24px" }}
+                >
                   <Infotitle>Responsáveis:</Infotitle>
                   <InfoText>Responsável A</InfoText>
                 </Column>
@@ -51,7 +55,7 @@ export const DetailedInfo = () => {
                 <Infotitle>Sensor</Infotitle>
                 <InfoText>{myContext?.selectedAsset?.sensorId}</InfoText>
               </Column>
-              <Column $disableBorder $marginBottom={isMobile ? "24px" : "0"}>
+              <Column $disableBorder>
                 <Infotitle>Receptor</Infotitle>
                 <InfoText>{myContext?.selectedAsset?.gatewayId}</InfoText>
               </Column>
