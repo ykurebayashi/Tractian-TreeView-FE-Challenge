@@ -30,3 +30,13 @@ export const IconContainer = styled.div<{$hasChildren: boolean}>`
         height: 22px;
     }
 `
+
+export const LabelButton = styled.button`
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+`

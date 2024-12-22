@@ -8,14 +8,16 @@ import {
   LabelingElement,
   ExpandCondenseButton,
   IconContainer,
+  LabelButton,
 } from "./style";
 import { NodeIcons } from "./constants";
 
 export const TreeNode = ({ node }: { node: NodeType }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleNode = () => setIsOpen(!isOpen);
 
   const hasChildren = node.children && node.children.length > 0;
+
+  const toggleNode = () => setIsOpen(!isOpen);
 
   return (
     <MainNodeContainer>
@@ -25,10 +27,12 @@ export const TreeNode = ({ node }: { node: NodeType }) => {
             {isOpen ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
           </ExpandCondenseButton>
         )}
-        <IconContainer $hasChildren={hasChildren}>
-          {NodeIcons[node.type]}
-        </IconContainer>
-        <Text>{node.name}</Text>
+        <LabelButton>
+          <IconContainer $hasChildren={hasChildren}>
+            {NodeIcons[node.type]}
+          </IconContainer>
+          <Text>{node.name}</Text>
+        </LabelButton>
       </LabelingElement>
       {isOpen && <TreeView data={node?.children} />}
     </MainNodeContainer>
