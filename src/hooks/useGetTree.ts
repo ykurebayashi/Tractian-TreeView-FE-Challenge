@@ -72,7 +72,7 @@ export const useGetTree = ({currentId, search, filter}: {currentId: string, sear
           });
         }
       
-        if (filter === 'critical_sensor' && asset.status === 'alert') {
+        if (filter === 'critical_sensor' && asset.status !== 'operating') {
           assetMap.set(asset.id, {
             ...asset,
             id: asset.id,
