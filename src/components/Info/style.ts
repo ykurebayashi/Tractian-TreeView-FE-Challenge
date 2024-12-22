@@ -16,14 +16,15 @@ export const MainContainer = styled.div`
 
 export const InfosContainer = styled.div`
   display: flex; 
-  align-ttems: flex-start; 
+  align-items: flex-start; 
   gap: 12px; 
   width: 100%; 
-  height: 100%; 
+  height: 90%; 
 `
 
 export const InfoSection = styled.div<{$width?: string}>`
   border: ${`1px solid ${CustomColors.grey.medium}`};
-  height: 100%;
+  height: 80vh;
   width: ${props => props.$width ?? '100%'};
+  overflow: scroll;
 `
