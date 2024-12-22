@@ -43,6 +43,7 @@ export const useGetTree = ({currentId, search}: {currentId: string, search: stri
       //TO-DO -> tentar colocar os dois em 1 loop só, dessa forma eu estou passando 2x por cada locations e cada assets
       locations?.forEach((location) => {
         locationMap.set(location.id, {
+          ...location,
           id: location.id,
           name: location.name,
           type: "location", // poderia ser sublocation, mas não tem diferença a nível funcional pra gente, já que o parentId que vai determinar
@@ -52,6 +53,7 @@ export const useGetTree = ({currentId, search}: {currentId: string, search: stri
     
       assets?.forEach((asset) => {
         assetMap.set(asset.id, {
+          ...asset,
           id: asset.id,
           name: asset.name,
           type: asset.sensorType ? "component" : "asset", // If the item has a sensorType, it means it is a component - o ternário vai checar isso
