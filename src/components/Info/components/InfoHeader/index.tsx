@@ -22,7 +22,7 @@ export const InfoHeader = () => {
         <Text $fontSize={22} $fontWeight={600}>
           Ativos
         </Text>
-        <Text style={{ color: "#77818C" }} $fontSize={14}>
+        <Text $fontColor="#77818C" $fontSize={14}>
           / {context?.location?.name} Unit
         </Text>
       </FlexContainer>
